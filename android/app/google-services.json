@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "340390328214",
+    "project_id": "education-children-app-a7159",
+    "storage_bucket": "education-children-app-a7159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340390328214:android:6e1eb54857b469291c0fb7",
+        "android_client_info": {
+          "package_name": "com.example.children_education"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340390328214-8vg5bu9bl3u2kcjvb61ctsvj6klfad8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.children_education",
+            "certificate_hash": "82fc236b067c8e5348a425c5bd4be28b316d4be1"
+          }
+        },
+        {
+          "client_id": "340390328214-ohjo5rkkdugtei2qhs8gfshdet16ou13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmaap3gRj05RmJA5oDVMDTwBRvB3ikXA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340390328214-ohjo5rkkdugtei2qhs8gfshdet16ou13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340390328214:android:eab474f99b701b781c0fb7",
+        "android_client_info": {
+          "package_name": "com.example.questiones_control_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340390328214-iogf994ao9768gfrgh93j3s8fs4dbijt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.questiones_control_app",
+            "certificate_hash": "d372950f4c2f8139ca058060ffc48c039857d03e"
+          }
+        },
+        {
+          "client_id": "340390328214-ohjo5rkkdugtei2qhs8gfshdet16ou13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmaap3gRj05RmJA5oDVMDTwBRvB3ikXA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340390328214-ohjo5rkkdugtei2qhs8gfshdet16ou13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
