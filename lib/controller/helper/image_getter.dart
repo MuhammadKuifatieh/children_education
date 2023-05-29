@@ -6,8 +6,8 @@ import 'package:path/path.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ImageGetter {
-  Future<FilePickerResult> getImage() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles(
+  Future<FilePickerResult?> getImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.image,
       allowCompression: true,
     );
@@ -20,10 +20,10 @@ class ImageGetter {
   }
 
   Future<String> uploadImageToFirebase(
-      {BuildContext context,
-      FilePickerResult pickedFile,
-      String folderName}) async {
-    String fileName = basename(File(pickedFile.files.single.path).path);
+      {required BuildContext context,
+      required FilePickerResult pickedFile,
+      required String folderName}) async {
+    String fileName = basename(File(pickedFile.files.single.path!).path);
     firebase_storage.UploadTask uploadTask;
 
     firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
@@ -32,9 +32,9 @@ class ImageGetter {
         .child(fileName);
     final metadata = firebase_storage.SettableMetadata(
         contentType: 'image/jpeg',
-        customMetadata: {'picked-file-path': pickedFile.files.single.path});
-    String url;
-    uploadTask = ref.putFile(File(pickedFile.files.single.path), metadata);
+        customMetadata: {'picked-file-path': pickedFile.files.single.path!});
+    String url = "";
+    uploadTask = ref.putFile(File(pickedFile.files.single.path!), metadata);
     await uploadTask.whenComplete(() async {
       var dowurl = await ref.getDownloadURL();
       url = dowurl.toString();

@@ -1,17 +1,15 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class QuestionSolveModel {
-  String id;
+  String ?id;
   String questionId;
   bool isSolve;
   String userId;
   QuestionSolveModel({
     this.id,
-    @required this.questionId,
-    @required this.isSolve,
-    @required this.userId,
+    required this.questionId,
+    required this.isSolve,
+    required this.userId,
   });
 
   Map<String, dynamic> toMap() {
@@ -51,6 +49,5 @@ class QuestionSolveModel {
   }
 
   @override
-  int get hashCode =>
-      questionId.hashCode ^ isSolve.hashCode ^ userId.hashCode;
+  int get hashCode => questionId.hashCode ^ isSolve.hashCode ^ userId.hashCode;
 }

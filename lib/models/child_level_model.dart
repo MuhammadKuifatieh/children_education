@@ -3,17 +3,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class ChildLevelModel {
-  String id;
+  String? id;
   String categoryLevelId;
   bool isWath;
   bool isEnd;
   String userId;
   ChildLevelModel({
     this.id,
-    @required this.categoryLevelId,
-    @required this.isWath,
-    @required this.isEnd,
-    @required this.userId,
+    required this.categoryLevelId,
+    required this.isWath,
+    required this.isEnd,
+    required this.userId,
   });
 
   Map<String, dynamic> toMap() {

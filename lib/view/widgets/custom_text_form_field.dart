@@ -1,15 +1,14 @@
+
 import 'package:flutter/material.dart';
 
-import 'custom_text.dart';
-
 class CustomTextFormField extends StatelessWidget {
-  final String text;
+  final String? text;
 
-  final String hint;
+  final String? hint;
 
-  final Function onSave;
-  final Function validator;
-  final TextEditingController controller;
+  final Function(String?)? onSave;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   CustomTextFormField({
     this.text,

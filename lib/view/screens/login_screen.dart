@@ -108,10 +108,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                   CustomButton(
                     onPress: () async {
-                      _formKey.currentState.save();
+                      _formKey.currentState?.save();
                       var userCredential;
 
-                      if (_formKey.currentState.validate()) {
+                      if (_formKey.currentState?.validate() ?? false) {
                         BotToast.showLoading();
                         try {
                           print(emailController.text);
@@ -122,9 +122,9 @@ class LoginScreen extends StatelessWidget {
                                   password: passwordController.text)
                               .then((value) async {
                             print(value);
-                            UserModel user = await FireStoreUser()
-                                .getUserById(value.user.uid);
-                            await saveINpref(value.user.uid);
+                            UserModel? user = await FireStoreUser()
+                                .getUserById(value.user!.uid);
+                            await saveINpref(value.user!.uid);
                             Navigator.of(context)
                                 .pushNamed(CategoryScreen.routeName);
                           });
@@ -162,10 +162,10 @@ class LoginScreen extends StatelessWidget {
                     onPress: () async {
                       try {
                         BotToast.showLoading();
-                        final GoogleSignInAccount googleUser =
+                        final GoogleSignInAccount? googleUser =
                             await GoogleSignIn().signIn();
                         final GoogleSignInAuthentication googleAuth =
-                            await googleUser.authentication;
+                            await googleUser!.authentication;
                         final credential = GoogleAuthProvider.credential(
                           accessToken: googleAuth.accessToken,
                           idToken: googleAuth.idToken,
@@ -173,22 +173,23 @@ class LoginScreen extends StatelessWidget {
                         final user = await FirebaseAuth.instance
                             .signInWithCredential(credential);
 
-                        if (FireStoreUser().getUserById(user.user.uid) ==
+                        if (await (FireStoreUser()
+                                .getUserById(user.user?.uid ?? "")) ==
                             null) {
                           Navigator.of(context)
                               .pushNamed(ChildScreen.routeName);
                           FireStoreUser().add(
                             UserModel(
-                              userName: user.user.displayName,
-                              email: user.user.email,
-                              uid: user.user.uid,
+                              userName: user.user!.displayName!,
+                              email: user.user!.email!,
+                              uid: user.user!.uid,
                             ),
                           );
                         } else {
                           Navigator.of(context)
                               .pushNamed(CategoryScreen.routeName);
                         }
-                        saveINpref(user.user.uid);
+                        saveINpref(user.user!.uid);
                       } catch (e) {
                         BotToast.closeAllLoading();
                         BotToast.showText(text: 'حدث خطأ ما');

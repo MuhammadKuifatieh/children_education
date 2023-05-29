@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './view/screens/login_screen.dart';
-import './view/screens/register_screen.dart';
-import './view/screens/child_screen.dart';
-import './view/screens/category_screen.dart';
-import './view/screens/level_screen.dart';
-import './view/screens/level_content_screen.dart';
-import './view/screens/question_screen.dart';
-import './view/screens/answer_screen.dart';
-import './controller/provider/answer_provider.dart';
-import './controller/provider/category_provider.dart';
-import './controller/provider/level_content_provider.dart';
-import './controller/provider/level_provider.dart';
-import './controller/provider/question_provider.dart';
+import 'controller/provider/answer_provider.dart';
+import 'controller/provider/category_provider.dart';
+import 'controller/provider/level_content_provider.dart';
+import 'controller/provider/level_provider.dart';
+import 'controller/provider/question_provider.dart';
+import 'view/screens/answer_screen.dart';
+import 'view/screens/category_screen.dart';
+import 'view/screens/child_screen.dart';
+import 'view/screens/level_content_screen.dart';
+import 'view/screens/level_screen.dart';
+import 'view/screens/login_screen.dart';
+import 'view/screens/question_screen.dart';
+import 'view/screens/register_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +26,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  String userId;
-  Future<String> getUserId() async {
+  String? userId;
+  Future<String?> getUserId() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     userId = pref.getString('userId');
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Directionality(
           textDirection: TextDirection.rtl,
-          child: FutureBuilder<String>(
+          child: FutureBuilder<String?>(
             future: getUserId(),
             builder: (context, snapShot) =>
                 (snapShot.data == null) ? LoginScreen() : CategoryScreen(),

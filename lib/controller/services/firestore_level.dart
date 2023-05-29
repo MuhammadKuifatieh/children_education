@@ -10,7 +10,8 @@ class FireStoreLevel {
     levelModel.id = response.id;
     return levelModel;
   }
- Future<void> delete(String id) async {
+
+  Future<void> delete(String id) async {
     await _levelCollection.doc(id).delete();
   }
 
@@ -18,17 +19,19 @@ class FireStoreLevel {
     var response = await _levelCollection.get();
     List<LevelModel> levels = [];
     for (var item in response.docs) {
-      levels.add(LevelModel.fromMap(item.data(), item.id));
+      levels.add(
+          LevelModel.fromMap(item.data() as Map<String, dynamic>, item.id));
     }
     return levels;
   }
 
-  Future<LevelModel> getLevelById(String levelId) async {
+  Future<LevelModel?> getLevelById(String levelId) async {
     var response = await _levelCollection.get();
-    LevelModel level;
+    LevelModel? level;
     for (var item in response.docs)
       if (item.id == levelId) {
-        level = LevelModel.fromMap(item.data(), item.id);
+        level =
+            LevelModel.fromMap(item.data() as Map<String, dynamic>, item.id);
       }
     return level;
   }

@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class LevelModel {
-  String id;
+  String? id;
   String name;
   int number;
   LevelModel({
-    @required this.name,
-    @required this.number,
+    required this.name,
+    required this.number,
     this.id,
   });
 

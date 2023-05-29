@@ -26,8 +26,9 @@ class LevelProvider with ChangeNotifier {
     List<LevelModel> newList = [];
     List<String> newStrList = [];
     for (var item in categoryLevels) {
-      newStrList.add(item.id);
-      newList.add(await FireStoreLevel().getLevelById(item.levelId));
+      newStrList.add(item.id!);
+      final resutl = await FireStoreLevel().getLevelById(item.levelId);
+      if (resutl != null) newList.add(resutl);
     }
     for (int i = 0; i < newList.length; i++) {
       for (int j = 0; j < newList.length; j++) {
@@ -51,11 +52,12 @@ class LevelProvider with ChangeNotifier {
   }
 
   Future<void> add(String categoryId) async {
-    CategoryLevelModel categoryLevel =
+    CategoryLevelModel? categoryLevel =
         await FireStoreCategoryLevel().add(categoryId);
     if (null != categoryLevel) {
-      categoryLevelId.add(categoryLevel.id);
-      _levels.add(await FireStoreLevel().getLevelById(categoryLevel.levelId));
+      categoryLevelId.add(categoryLevel.id!);
+      final result = await FireStoreLevel().getLevelById(categoryLevel.levelId);
+      if (result != null) _levels.add(result);
     }
 
     notifyListeners();
@@ -80,9 +82,8 @@ class LevelProvider with ChangeNotifier {
         if (flag) {
           childLevels[i].isWath = true;
           FireStoreChildLevel().update(childLevels[i]);
-        }
-        else{
-           childLevels[i].isEnd = true;
+        } else {
+          childLevels[i].isEnd = true;
           FireStoreChildLevel().update(childLevels[i]);
         }
       }

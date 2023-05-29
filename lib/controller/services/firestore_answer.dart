@@ -12,15 +12,17 @@ class FireStoreAnswer {
   }
 
   Future<void> delete(String id) async {
-     await _answerCollection.doc(id).delete();
+    await _answerCollection.doc(id).delete();
   }
+
   Future<List<AnswerModel>> getAllAnswerToQuestion(String questionId) async {
     var response = await _answerCollection
         .where('questionId', isEqualTo: questionId)
         .get();
     List<AnswerModel> answers = [];
     for (var item in response.docs) {
-      answers.add(AnswerModel.fromMap(item.data(), item.id));
+      answers.add(
+          AnswerModel.fromMap(item.data() as Map<String, dynamic>, item.id));
     }
     return answers;
   }

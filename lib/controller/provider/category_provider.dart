@@ -5,7 +5,7 @@ import '../../models/category_model.dart';
 import '../services/firestore_category.dart';
 
 class CategoryProvider with ChangeNotifier {
-  List<CategoryModel> _categories;
+  late List<CategoryModel> _categories;
   List<CategoryModel> get categories => [..._categories];
 
   Future<void> getAllCategory() async {

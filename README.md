@@ -1,16 +1,34 @@
-# children_education
+# Children Education
 
-A new Flutter project.
 
-## Getting Started
+Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
-This project is a starting point for a Flutter application.
+## Description
 
-A few resources to get you started if this is your first Flutter project:
+An educational application for children with multiple choice questions. 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Features
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Browse multiple categories of topics
+
+-Each category has multiple levels
+
+-Each level has a video and audio descrimson
+Pictures, text and multiplex questions
+
+- Each question has multiple options to select the correct answer
+## Installation
+
+1. Make sure you have Flutter `3.7.8` installed. If not, follow the [official installation guide](https://flutter.dev/docs/get-started/install).
+2. Clone this repository: `git clone https://github.com/MuhammadKuifatieh/children_education.git`
+3. Change to the project directory: `cd children_education`
+4. Install dependencies: `flutter pub get`
+
+## License
+
+This project is open source.

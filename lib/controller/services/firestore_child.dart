@@ -18,10 +18,10 @@ class FireStoreChild {
 
   Future<ChildModel> get() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String userId = pref.getString('userId');
+    String userId = pref.getString('userId')??"";
     var response = await _childCollection.where('userId', isEqualTo: userId).get();
     ChildModel child =
-        ChildModel.fromMap(response.docs[0].data(), response.docs[0].id);
+        ChildModel.fromMap(response.docs[0].data()as Map<String, dynamic>, response.docs[0].id);
     return child;
   }
 }

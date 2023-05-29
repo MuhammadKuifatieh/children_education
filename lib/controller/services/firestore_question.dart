@@ -15,12 +15,12 @@ class FireStoreQuestion {
     await _questionCollection.doc(id).delete();
   }
 
-  Future<QuestionModel> getById(String levelId) async {
+  Future<QuestionModel?> getById(String levelId) async {
     var response = await _questionCollection.get();
-    QuestionModel result;
+    QuestionModel? result;
     for (var item in response.docs)
       if (item.id == levelId)
-        result = QuestionModel.fromMap(item.data(), item.id);
+        result = QuestionModel.fromMap(item.data()as Map<String, dynamic>, item.id);
     return result;
   }
 
@@ -31,7 +31,7 @@ class FireStoreQuestion {
         .get();
     List<QuestionModel> questions = [];
     for (var item in response.docs) {
-      questions.add(QuestionModel.fromMap(item.data(), item.id));
+      questions.add(QuestionModel.fromMap(item.data()as Map<String, dynamic>, item.id));
     }
     return questions;
   }

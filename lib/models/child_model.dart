@@ -1,19 +1,17 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class ChildModel {
-  String id;
+  String? id;
   String name;
   String age;
   String gender;
   String userId;
   ChildModel({
     this.id,
-    @required this.name,
-    @required this.age,
-    @required this.gender,
-    @required this.userId,
+    required this.name,
+    required this.age,
+    required this.gender,
+    required this.userId,
   });
 
   Map<String, dynamic> toMap() {
@@ -57,8 +55,5 @@ class ChildModel {
 
   @override
   int get hashCode =>
-      name.hashCode ^
-      age.hashCode ^
-      gender.hashCode ^
-      userId.hashCode;
+      name.hashCode ^ age.hashCode ^ gender.hashCode ^ userId.hashCode;
 }

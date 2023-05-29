@@ -19,7 +19,7 @@ class FireStoreCategory {
     var response = await _categoryCollection.get();
     List<CategoryModel> categories = [];
     for (var item in response.docs) {
-      categories.add(CategoryModel.fromMap(item.data(), item.id));
+      categories.add(CategoryModel.fromMap(item.data()as Map<String, dynamic>, item.id));
     }
     return categories;
   }

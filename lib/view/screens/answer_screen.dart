@@ -20,16 +20,16 @@ class AnswerScreen extends StatefulWidget {
 }
 
 class _AnswerScreenState extends State<AnswerScreen> {
-  Map<String, dynamic> argArray;
-  String questionId;
-  bool _init;
-  QuestionModel question;
-  List<AnswerModel> answers;
+  late Map<String, dynamic> argArray;
+  late String questionId;
+  late bool _init;
+  late QuestionModel question;
+  late List<AnswerModel> answers;
   List<bool> flags = [];
   final assetsAudioPlayer = AssetsAudioPlayer();
-  YoutubePlayerController _controller;
-  Audio audio;
-  Color color;
+  late YoutubePlayerController _controller;
+  late Audio audio;
+  late Color color;
   @override
   void initState() {
     _init = false;
@@ -39,10 +39,10 @@ class _AnswerScreenState extends State<AnswerScreen> {
   @override
   void didChangeDependencies() {
     argArray =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     questionId = argArray['questionId'];
     color = argArray['color'];
-    question = Provider.of<QuestionProvider>(context).questionById(questionId);
+    question = Provider.of<QuestionProvider>(context).questionById(questionId)!;
     super.didChangeDependencies();
   }
 

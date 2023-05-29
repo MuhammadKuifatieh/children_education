@@ -1,16 +1,14 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class UserModel {
-  String id;
+  String? id;
   String userName;
   String email;
   String uid;
   UserModel({
-    @required this.userName,
-    @required this.email,
-    @required this.uid,
+    required this.userName,
+    required this.email,
+    required this.uid,
     this.id,
   });
 

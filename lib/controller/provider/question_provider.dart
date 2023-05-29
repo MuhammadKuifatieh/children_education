@@ -17,7 +17,7 @@ class QuestionProvider with ChangeNotifier {
     return [..._questionsSolved];
   }
 
-  QuestionModel questionById(questionId) {
+  QuestionModel? questionById(questionId) {
     for (var item in question) {
       if (item.id == questionId) return item;
     }
@@ -31,7 +31,7 @@ class QuestionProvider with ChangeNotifier {
     List<QuestionSolveModel> newList = [];
     _questionsSolved = [];
     for (var item in list) {
-      QuestionSolveModel newQ = await FireStoreQuestionSolve().getById(item.id);
+      QuestionSolveModel newQ = await FireStoreQuestionSolve().getById(item.id!);
       newList.add(newQ);
     }
     _questionsSolved = newList;

@@ -5,10 +5,10 @@ import 'custom_text.dart';
 class CustomButton extends StatelessWidget {
   final String text;
 
-  final Function onPress;
+  final VoidCallback onPress;
 
   CustomButton({
-    @required this.onPress,
+    required this.onPress,
     this.text = 'Write text ',
   });
 
@@ -16,13 +16,15 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: FlatButton(
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
+          padding: EdgeInsets.all(10),
+          primary: Theme.of(context).primaryColor,
         ),
-        padding: EdgeInsets.all(10),
         onPressed: onPress,
-        color: Theme.of(context).primaryColor,
         child: CustomText(
           alignment: Alignment.center,
           text: text,

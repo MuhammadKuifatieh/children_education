@@ -19,16 +19,16 @@ class LevelScreen extends StatefulWidget {
 
 class _LevelScreenState extends State<LevelScreen>
     with TickerProviderStateMixin {
-  String categoryId;
-  String imageUrl;
-  bool _init;
+  late String categoryId;
+  late String imageUrl;
+  late bool _init;
   bool flag = false;
-  Map<String, dynamic> argArray;
+  late Map<String, dynamic> argArray;
   List<Color> colors = [
-    Colors.yellow[600],
-    Colors.deepOrange[800],
-    Colors.purple[800],
-    Colors.red[200],
+    Colors.yellow.shade600,
+    Colors.deepOrange.shade800,
+    Colors.purple.shade800,
+    Colors.red.shade200,
   ];
   List<AnimationController> _animations = [];
 
@@ -42,7 +42,7 @@ class _LevelScreenState extends State<LevelScreen>
   @override
   void didChangeDependencies() {
     argArray =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     categoryId = argArray['categoryId'];
     imageUrl = argArray['imageUrl'];
     _animations.add(AnimationController(

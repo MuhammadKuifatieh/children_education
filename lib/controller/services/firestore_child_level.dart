@@ -18,7 +18,7 @@ class FireStoreChildLevel {
 
   Future<ChildLevelModel> getById(String categoryLevelId) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    String userId = pref.getString('userId');
+    String userId = pref.getString('userId') ?? "";
     var response = await _childLevelCollection
         .where('categoryLevelId', isEqualTo: categoryLevelId)
         .where('userId', isEqualTo: userId)
@@ -26,7 +26,7 @@ class FireStoreChildLevel {
     ChildLevelModel childLevel;
     if (response.docs.isNotEmpty) {
       childLevel =
-          ChildLevelModel.fromMap(response.docs[0].data(), response.docs[0].id);
+          ChildLevelModel.fromMap(response.docs[0].data()as Map<String, dynamic>, response.docs[0].id);
     } else {
       childLevel = await add(ChildLevelModel(
           categoryLevelId: categoryLevelId,
@@ -41,7 +41,7 @@ class FireStoreChildLevel {
     var response = await _childLevelCollection.get();
     List<ChildLevelModel> childLevels = [];
     for (var item in response.docs) {
-      childLevels.add(ChildLevelModel.fromMap(item.data(), item.id));
+      childLevels.add(ChildLevelModel.fromMap(item.data()as Map<String, dynamic>, item.id));
     }
     return childLevels;
   }

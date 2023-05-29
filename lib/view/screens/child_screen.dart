@@ -23,12 +23,12 @@ class _ChildScreenState extends State<ChildScreen> {
   final TextEditingController genderController = TextEditingController();
 
   final TextEditingController nameController = TextEditingController();
-  Map<String, dynamic> argArray;
-  String userId;
+  late Map<String, dynamic> argArray;
+  late String userId;
   @override
   void didChangeDependencies() {
     argArray =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     userId = argArray['userId'];
     super.didChangeDependencies();
   }
@@ -110,7 +110,7 @@ class _ChildScreenState extends State<ChildScreen> {
                           age: ageController.text,
                           gender: genderController.text,
                           userId: userId));
-                          Navigator.of(context).pushNamed(CategoryScreen.routeName);
+                      Navigator.of(context).pushNamed(CategoryScreen.routeName);
                       BotToast.closeAllLoading();
                     },
                     text: 'إتمام التسجيل',

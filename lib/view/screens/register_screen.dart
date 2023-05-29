@@ -109,9 +109,9 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     CustomButton(
                       onPress: () async {
-                        _formKey.currentState.save();
+                        _formKey.currentState?.save();
                         var userCredential;
-                        if (_formKey.currentState.validate()) {
+                        if (_formKey.currentState?.validate() ?? false) {
                           BotToast.showLoading();
                           try {
                             userCredential = await FirebaseAuth.instance

@@ -19,17 +19,17 @@ class FireStoreUser {
     var response = await _userCollection.get();
     List<UserModel> users = [];
     for (var item in response.docs) {
-      users.add(UserModel.fromMap(item.data(), item.id));
+      users.add(UserModel.fromMap(item.data()as Map<String, dynamic>, item.id));
     }
     return users;
   }
 
-  Future<UserModel> getUserById(String userId) async {
+  Future<UserModel?> getUserById(String userId) async {
     var response = await _userCollection.where('uId', isEqualTo: userId).get();
 
     if (response.docs.isNotEmpty) {
       UserModel user =
-          UserModel.fromMap(response.docs[0].data(), response.docs[0].id);
+          UserModel.fromMap(response.docs[0].data()as Map<String, dynamic>, response.docs[0].id);
 
       return user;
     }

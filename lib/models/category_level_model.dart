@@ -1,15 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class CategoryLevelModel {
-  String id;
+  String? id;
   String categoryId;
   String levelId;
 
   CategoryLevelModel({
-    @required this.categoryId,
-    @required this.levelId,
+    required this.categoryId,
+    required this.levelId,
     this.id,
   });
 

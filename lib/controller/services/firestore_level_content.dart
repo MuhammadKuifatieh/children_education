@@ -23,7 +23,7 @@ class FireStoreLevelContent {
         .get();
     List<LevelContentModel> levelContent = [];
     for (var item in response.docs) {
-      levelContent.add(LevelContentModel.fromMap(item.data(), item.id));
+      levelContent.add(LevelContentModel.fromMap(item.data()as Map<String, dynamic>, item.id));
     }
     return levelContent;
   }

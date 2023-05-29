@@ -19,21 +19,23 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
   List<String> s = ['1', '2', '3', '4'];
-  bool _init;
-  ChildModel childModel;
+  late bool _init;
+  late ChildModel childModel;
   String childName = '';
   List<Color> colors = [
-    Colors.yellow[600],
-    Colors.deepOrange[800],
-    Colors.purple[800],
-    Colors.red[200],
+    Colors.yellow.shade600,
+    Colors.deepOrange.shade800,
+    Colors.purple.shade800,
+    Colors.red.shade200,
   ];
   fetchCategory(context) async {
     if (!_init) {
+      setState(() {
+        _init = true;
+      });
       await Provider.of<CategoryProvider>(context).getAllCategory();
       childModel = await FireStoreChild().get();
       childName = childModel.name;
-      _init = true;
     }
   }
 
@@ -115,7 +117,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             padding: const EdgeInsets.all(8.0),
                             child: InkWell(
                               onTap: () async {
-                                log(categories[index].id);
+                                log(categories[index].id.toString());
                                 Navigator.of(context).pushNamed(
                                     LevelScreen.routeName,
                                     arguments: {

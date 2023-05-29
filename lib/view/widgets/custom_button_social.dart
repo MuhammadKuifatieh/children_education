@@ -5,12 +5,12 @@ import 'custom_text.dart';
 class CustomButtonSocial extends StatelessWidget {
   final String text;
   final String imageName;
-  final Function onPress;
+  final VoidCallback onPress;
 
   CustomButtonSocial({
-    @required this.text,
-    @required this.imageName,
-    @required this.onPress,
+    required this.imageName,
+    required this.text,
+    required this.onPress,
   });
 
   @override
@@ -22,10 +22,12 @@ class CustomButtonSocial extends StatelessWidget {
           borderRadius: BorderRadius.circular(11),
           color: Colors.grey.shade50,
         ),
-        child: FlatButton(
+        child: ElevatedButton(
           onPressed: onPress,
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+          style: ElevatedButton.styleFrom(
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

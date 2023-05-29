@@ -16,8 +16,8 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  String categoryLevelId;
-  Map<String, dynamic> argArray;
+  String? categoryLevelId;
+  Map<String, dynamic>? argArray;
   List<String> name = [
     'السؤال الاول',
     'السؤال الثاني',
@@ -35,13 +35,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
     'السؤال الرابع عشر',
     'السؤال الخامس عشر',
   ];
-  Color color;
-  String levelName;
-  bool _init;
+  late Color color;
+  late String levelName;
+  late bool _init;
   fetchQuestion() async {
     if (!_init) {
       await Provider.of<QuestionProvider>(context)
-          .getAllQuestion(categoryLevelId);
+          .getAllQuestion(categoryLevelId!);
       _init = true;
     }
   }
@@ -55,10 +55,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void didChangeDependencies() {
     argArray =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
-    categoryLevelId = argArray['categoryLevelId'];
-    color = argArray['color'];
-    levelName = argArray['levelName'];
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    categoryLevelId = argArray!['categoryLevelId'];
+    color = argArray!['color'];
+    levelName = argArray!['levelName'];
 
     super.didChangeDependencies();
   }

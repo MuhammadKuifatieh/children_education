@@ -17,19 +17,19 @@ class LevelContentScreen extends StatefulWidget {
 }
 
 class _LevelContentScreenState extends State<LevelContentScreen> {
-  YoutubePlayerController _controller;
-  String categoryLevelId;
-  String levelName;
-  Map<String, dynamic> argArray;
-  bool _initContent;
-  bool _setVideo;
-  bool showPhotoText;
-  Color color;
-  LevelContentModel video;
+  late YoutubePlayerController _controller;
+  late String categoryLevelId;
+  late String levelName;
+  late Map<String, dynamic> argArray;
+  late bool _initContent;
+  late bool _setVideo;
+  late bool showPhotoText;
+  late Color color;
+  LevelContentModel? video;
   List<LevelContentModel> photo = [];
   List<LevelContentModel> text = [];
-  LevelContentModel audio;
-  Audio audios;
+  LevelContentModel? audio;
+  Audio? audios;
   final assetsAudioPlayer = AssetsAudioPlayer();
   fetchContent() async {
     if (!_initContent) {
@@ -45,7 +45,7 @@ class _LevelContentScreenState extends State<LevelContentScreen> {
     for (var item in list) {
       if (item.type == 'فيديو') {
         video = item;
-        setVideo(video.content);
+        setVideo(video!.content);
       } else if (item.type == 'صورة') {
         photo.add(item);
       } else if (item.type == 'نص') {
@@ -72,7 +72,7 @@ class _LevelContentScreenState extends State<LevelContentScreen> {
   @override
   void didChangeDependencies() {
     argArray =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     categoryLevelId = argArray['categoryLevelId'];
     levelName = argArray['levelName'];
     color = argArray['color'];
@@ -227,7 +227,7 @@ class _LevelContentScreenState extends State<LevelContentScreen> {
                                       IconButton(
                                         icon: Icon(Icons.play_circle_fill),
                                         onPressed: () {
-                                          assetsAudioPlayer.open(audios);
+                                          assetsAudioPlayer.open(audios!);
                                         },
                                         color: color,
                                         iconSize: 75,
@@ -277,7 +277,7 @@ class _LevelContentScreenState extends State<LevelContentScreen> {
                           backgroundColor: MaterialStateProperty.all(color),
                           elevation: MaterialStateProperty.all(10)),
                       onPressed: () {
-                        Provider.of<LevelProvider>(context,listen: false)
+                        Provider.of<LevelProvider>(context, listen: false)
                             .updateChildLevel(categoryLevelId, true);
                         Navigator.of(context).popAndPushNamed(
                           QuestionScreen.routeName,

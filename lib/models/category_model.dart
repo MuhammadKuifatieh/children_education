@@ -1,15 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class CategoryModel {
-  String id;
+  String? id;
   String name;
   String image;
   CategoryModel({
     this.id,
-    @required this.name,
-    @required this.image,
+    required this.name,
+    required this.image,
   });
 
   Map<String, dynamic> toMap() {

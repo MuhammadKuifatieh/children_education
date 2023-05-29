@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class LevelContentModel {
-  String id;
+  String? id;
   String categoryLevelId;
   String type;
   String content;
   LevelContentModel({
     this.id,
-    @required this.categoryLevelId,
-    @required this.type,
-    @required this.content,
+    required this.categoryLevelId,
+    required this.type,
+    required this.content,
   });
 
   Map<String, dynamic> toMap() {

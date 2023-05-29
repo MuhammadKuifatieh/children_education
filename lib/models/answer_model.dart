@@ -1,19 +1,17 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class AnswerModel {
-  String id;
+  String? id;
   String answerType;
   String answerContent;
   bool isCurrect;
   String questionId;
   AnswerModel({
     this.id,
-    @required this.answerType,
-    @required this.answerContent,
-    @required this.isCurrect,
-    @required this.questionId,
+    required this.answerType,
+    required this.answerContent,
+    required this.isCurrect,
+    required this.questionId,
   });
 
   Map<String, dynamic> toMap() {
